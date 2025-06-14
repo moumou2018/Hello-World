@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Prescriptions</h1>
+
+<form method="get" action="{% url 'prescriptions:prescription_list' %}">
+    <input type="text" name="patient_name" placeholder="Patient name..." value="{{ request.GET.patient_name }}">
+    <input type="text" name="medication_name" placeholder="Medication..." value="{{ request.GET.medication_name }}">
+    <input type="text" name="doctor_name" placeholder="Issuing doctor..." value="{{ request.GET.doctor_name }}">
+    <button type="submit">Filter</button>
+</form>
+<br>
+
+<a href="{% url 'prescriptions:prescription_create' %}">Add New Prescription</a>
+<ul>
+    {% for prescription in prescriptions %}
+        <li>
+            <a href="{% url 'prescriptions:prescription_detail' prescription.pk %}">
+                {{ prescription.medication_name }} for {{ prescription.patient }} (Dr. {{ prescription.issuing_doctor_name }})
+            </a>
+            (<a href="{% url 'prescriptions:prescription_update' prescription.pk %}">Edit</a>)
+            (<a href="{% url 'prescriptions:prescription_delete' prescription.pk %}">Delete</a>)
+        </li>
+    {% empty %}
+        <li>No prescriptions found.</li>
+    {% endfor %}
+</ul>
+{% endblock %}

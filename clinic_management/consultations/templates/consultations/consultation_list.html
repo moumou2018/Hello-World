@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Consultations</h1>
+<a href="{% url 'consultations:consultation_create' %}">Add New Consultation</a>
+<ul>
+    {% for consultation in consultations %}
+        <li>
+            <a href="{% url 'consultations:consultation_detail' consultation.pk %}">
+                Consultation for {{ consultation.appointment.patient }} on {{ consultation.appointment.appointment_date|date:"Y-m-d H:i" }}
+            </a>
+            (<a href="{% url 'consultations:consultation_update' consultation.pk %}">Edit</a>)
+            (<a href="{% url 'consultations:consultation_delete' consultation.pk %}">Delete</a>)
+        </li>
+    {% empty %}
+        <li>No consultations found.</li>
+    {% endfor %}
+</ul>
+{% endblock %}

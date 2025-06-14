@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Consultation Details</h1>
+<p><strong>Appointment:</strong> {{ consultation.appointment.patient }} on {{ consultation.appointment.appointment_date|date:"Y-m-d H:i" }} (Dr. {{ consultation.appointment.doctor_name }})</p>
+<p><strong>Notes:</strong> {{ consultation.notes|linebreaksbr }}</p>
+<p><strong>Diagnosis:</strong> {{ consultation.diagnosis|linebreaksbr }}</p>
+<p><strong>Treatment Plan:</strong> {{ consultation.treatment_plan|linebreaksbr }}</p>
+<a href="{% url 'consultations:consultation_list' %}">Back to list</a>
+<a href="{% url 'consultations:consultation_update' consultation.pk %}">Edit</a>
+<a href="{% url 'consultations:consultation_delete' consultation.pk %}">Delete</a>
+{% endblock %}

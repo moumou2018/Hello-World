@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Appointments</h1>
+
+<form method="get" action="{% url 'appointments:appointment_list' %}">
+    <input type="text" name="patient_name" placeholder="Patient name..." value="{{ request.GET.patient_name }}">
+    <input type="text" name="doctor_name" placeholder="Doctor name..." value="{{ request.GET.doctor_name }}">
+    <input type="text" name="status" placeholder="Status (e.g. Scheduled)..." value="{{ request.GET.status }}">
+    <button type="submit">Filter</button>
+</form>
+<br>
+
+<a href="{% url 'appointments:appointment_create' %}">Add New Appointment</a>
+<ul>
+    {% for appointment in appointments %}
+        <li>
+            <a href="{% url 'appointments:appointment_detail' appointment.pk %}">
+                {{ appointment.patient }} on {{ appointment.appointment_date|date:"Y-m-d H:i" }} (Dr. {{ appointment.doctor_name }}) - {{ appointment.status }}
+            </a>
+            (<a href="{% url 'appointments:appointment_update' appointment.pk %}">Edit</a>)
+            (<a href="{% url 'appointments:appointment_delete' appointment.pk %}">Delete</a>)
+        </li>
+    {% empty %}
+        <li>No appointments found.</li>
+    {% endfor %}
+</ul>
+{% endblock %}

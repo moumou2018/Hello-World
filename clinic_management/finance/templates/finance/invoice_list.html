@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Invoices</h1>
+
+<form method="get" action="{% url 'finance:invoice_list' %}">
+    <input type="text" name="patient_name" placeholder="Patient name..." value="{{ request.GET.patient_name }}">
+    <select name="payment_status">
+        <option value="">All Statuses</option>
+        {% for choice_value, choice_display in payment_status_choices %}
+            <option value="{{ choice_value }}" {% if request.GET.payment_status == choice_value %}selected{% endif %}>{{ choice_display }}</option>
+        {% endfor %}
+    </select>
+    <button type="submit">Filter</button>
+</form>
+<br>
+
+<a href="{% url 'finance:invoice_create' %}">Add New Invoice</a>
+<ul>
+    {% for invoice in invoices %}
+        <li>
+            <a href="{% url 'finance:invoice_detail' invoice.pk %}">
+                Invoice #{{ invoice.pk }} for {{ invoice.patient }} - Amount: {{ invoice.amount }} ({{ invoice.payment_status }})
+            </a>
+            (<a href="{% url 'finance:invoice_update' invoice.pk %}">Edit</a>)
+            (<a href="{% url 'finance:invoice_delete' invoice.pk %}">Delete</a>)
+        </li>
+    {% empty %}
+        <li>No invoices found.</li>
+    {% endfor %}
+</ul>
+{% endblock %}

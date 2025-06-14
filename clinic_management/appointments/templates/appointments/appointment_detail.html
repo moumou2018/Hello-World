@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Appointment Details</h1>
+<p><strong>Patient:</strong> {{ appointment.patient }}</p>
+<p><strong>Doctor:</strong> {{ appointment.doctor_name }}</p>
+<p><strong>Date & Time:</strong> {{ appointment.appointment_date|date:"Y-m-d H:i" }}</p>
+<p><strong>Reason:</strong> {{ appointment.reason }}</p>
+<p><strong>Status:</strong> {{ appointment.status }}</p>
+<a href="{% url 'appointments:appointment_list' %}">Back to list</a>
+<a href="{% url 'appointments:appointment_update' appointment.pk %}">Edit</a>
+<a href="{% url 'appointments:appointment_delete' appointment.pk %}">Delete</a>
+{% endblock %}

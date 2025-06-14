@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Clinic Management</title>
+</head>
+<body>
+    <nav>
+        <a href="/">Home</a> |
+        <a href="{% url 'patients:patient_list' %}">Patients</a> |
+        <a href="{% url 'appointments:appointment_list' %}">Appointments</a> |
+        <a href="{% url 'prescriptions:prescription_list' %}">Prescriptions</a> |
+        <a href="{% url 'consultations:consultation_list' %}">Consultations</a> |
+        <a href="{% url 'finance:invoice_list' %}">Invoices</a>
+        {# Add links to other modules later #}
+    </nav>
+    <hr>
+    {% block content %}
+    {% endblock %}
+</body>
+</html>

@@ -1,0 +1,21 @@
+<h1>Patients</h1>
+<a href="{% url 'patients:patient_create' %}">Add New Patient</a>
+
+<br>
+<form method="get" action="{% url 'patients:patient_list' %}">
+    <input type="text" name="q" placeholder="Search patients..." value="{{ request.GET.q }}">
+    <button type="submit">Search</button>
+</form>
+<br>
+
+<ul>
+    {% for patient in patients %}
+        <li>
+            <a href="{% url 'patients:patient_detail' patient.pk %}">{{ patient.first_name }} {{ patient.last_name }}</a>
+            (<a href="{% url 'patients:patient_update' patient.pk %}">Edit</a>)
+            (<a href="{% url 'patients:patient_delete' patient.pk %}">Delete</a>)
+        </li>
+    {% empty %}
+        <li>No patients found.</li>
+    {% endfor %}
+</ul>

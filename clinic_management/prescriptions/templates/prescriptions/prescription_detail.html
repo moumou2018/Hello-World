@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Prescription Details</h1>
+<p><strong>Patient:</strong> {{ prescription.patient }}</p>
+<p><strong>Medication:</strong> {{ prescription.medication_name }}</p>
+<p><strong>Dosage:</strong> {{ prescription.dosage }}</p>
+<p><strong>Frequency:</strong> {{ prescription.frequency }}</p>
+<p><strong>Start Date:</strong> {{ prescription.start_date|date:"Y-m-d" }}</p>
+<p><strong>End Date:</strong> {{ prescription.end_date|date:"Y-m-d"|default:"N/A" }}</p>
+<p><strong>Issuing Doctor:</strong> {{ prescription.issuing_doctor_name }}</p>
+<a href="{% url 'prescriptions:prescription_list' %}">Back to list</a>
+<a href="{% url 'prescriptions:prescription_update' prescription.pk %}">Edit</a>
+<a href="{% url 'prescriptions:prescription_delete' prescription.pk %}">Delete</a>
+{% endblock %}

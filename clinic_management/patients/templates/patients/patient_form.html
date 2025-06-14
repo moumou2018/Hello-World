@@ -1,0 +1,7 @@
+<h1>{% if view.kwargs.pk %}Edit Patient{% else %}Add New Patient{% endif %}</h1>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Save</button>
+</form>
+<a href="{% url 'patients:patient_list' %}">Cancel</a>

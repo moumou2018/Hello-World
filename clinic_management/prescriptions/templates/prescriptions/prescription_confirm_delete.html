@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Delete Prescription</h1>
+<p>Are you sure you want to delete the prescription for {{ prescription.medication_name }} for {{ prescription.patient }}?</p>
+<form method="post">
+    {% csrf_token %}
+    <button type="submit">Confirm Delete</button>
+</form>
+<a href="{% url 'prescriptions:prescription_detail' prescription.pk %}">Cancel</a>
+{% endblock %}

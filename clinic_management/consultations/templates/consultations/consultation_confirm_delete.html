@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Delete Consultation</h1>
+<p>Are you sure you want to delete the consultation for appointment: {{ consultation.appointment.patient }} on {{ consultation.appointment.appointment_date|date:"Y-m-d H:i" }}?</p>
+<form method="post">
+    {% csrf_token %}
+    <button type="submit">Confirm Delete</button>
+</form>
+<a href="{% url 'consultations:consultation_detail' consultation.pk %}">Cancel</a>
+{% endblock %}
