@@ -1,0 +1,1297 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!--
+    ====================================================================================================
+    PERSONNALISATION FACILE
+    ====================================================================================================
+    Modifiez les valeurs ci-dessous pour adapter le site à votre marque.
+    Les couleurs sont définies dans la section <style> sous la variable :root.
+    Le contenu textuel (nom, service, etc.) se trouve directement dans le <body>.
+    ====================================================================================================
+    -->
+
+    <!-- SEO & Métadonnées -->
+    <title>[NOM DE LA STARTUP] - [VALEUR AJOUTÉE]</title>
+    <meta name="description" content="Découvrez comment [NOM DE LA STARTUP] vous aide à [RÉSOUDRE UN PROBLÈME] grâce à notre solution de [SERVICE]. Simple, efficace et conçue pour vous.">
+    <link rel="canonical" href="https://votresite.com/">
+
+    <!-- Open Graph (pour le partage sur les réseaux sociaux) -->
+    <meta property="og:title" content="[NOM DE LA STARTUP] - [VALEUR AJOUTÉE]">
+    <meta property="og:description" content="Notre service de [SERVICE] simplifie votre quotidien.">
+    <meta property="og:image" content="https://votresite.com/og-image.jpg"> <!-- Mettez une URL d'image absolue -->
+    <meta property="og:url" content="https://votresite.com/">
+    <meta property="og:type" content="website">
+
+    <!-- Favicon (à remplacer par vos propres icônes) -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🚀</text></svg>">
+
+    <style>
+        /*
+        ====================================================================================================
+        STYLES CSS (Mobile-First, Responsive, Thème Clair/Sombre)
+        ====================================================================================================
+        */
+
+        /*------------------------------------*\
+          #VARIABLES & THÈME
+        \*------------------------------------*/
+
+        :root {
+            /* Palette de couleurs (Thème Clair par défaut) */
+            --color-primary: [COULEUR PRINCIPALE HEX]; /* Ex: #4F46E5 */
+            --color-accent: [COULEUR ACCENT HEX];   /* Ex: #F59E0B */
+
+            --color-text: #1F2937;
+            --color-text-muted: #6B7280;
+            --color-background: #FFFFFF;
+            --color-surface: #F9FAFB;
+            --color-border: #E5E7EB;
+            --color-success: #10B981;
+            --color-error: #EF4444;
+
+            /* Typographie */
+            --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+
+            /* Grille & Espacement (base 8px) */
+            --space-1: 0.5rem; /* 8px */
+            --space-2: 1rem;   /* 16px */
+            --space-3: 1.5rem; /* 24px */
+            --space-4: 2rem;   /* 32px */
+            --space-5: 2.5rem; /* 40px */
+            --space-6: 3rem;   /* 48px */
+            --space-8: 4rem;   /* 64px */
+            --space-12: 6rem;  /* 96px */
+
+            /* Autres */
+            --border-radius-md: 12px;
+            --border-radius-lg: 20px;
+            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+            --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+            --transition: all 0.2s ease-in-out;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --color-primary: [COULEUR PRINCIPALE HEX]; /* Garder ou ajuster pour le mode sombre */
+                --color-accent: [COULEUR ACCENT HEX];   /* Garder ou ajuster pour le mode sombre */
+
+                --color-text: #F9FAFB;
+                --color-text-muted: #9CA3AF;
+                --color-background: #111827;
+                --color-surface: #1F2937;
+                --color-border: #374151;
+            }
+        }
+
+        /*------------------------------------*\
+          #RESET & STYLES DE BASE
+        \*------------------------------------*/
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            font-size: 100%; /* 16px */
+            scroll-behavior: smooth;
+            scroll-padding-top: 6rem; /* Hauteur de la nav */
+        }
+
+        body {
+            font-family: var(--font-sans);
+            background-color: var(--color-background);
+            color: var(--color-text);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /*------------------------------------*\
+          #TYPOGRAPHIE FLUIDE & ÉLÉMENTS
+        \*------------------------------------*/
+
+        h1, h2, h3, h4, h5, h6 {
+            line-height: 1.2;
+            font-weight: 700;
+            text-wrap: balance;
+        }
+
+        h1 { font-size: clamp(2.5rem, 5vw + 1rem, 4rem); }
+        h2 { font-size: clamp(2rem, 4vw + 1rem, 3rem); }
+        h3 { font-size: clamp(1.25rem, 2vw + 0.5rem, 1.75rem); }
+        p { margin-bottom: var(--space-2); max-width: 65ch; }
+        a { color: var(--color-primary); text-decoration: none; transition: var(--transition); }
+        a:hover { text-decoration: underline; opacity: 0.8; }
+
+        img, svg { max-width: 100%; height: auto; display: block; }
+
+        /* Visibilité du focus pour l'accessibilité */
+        :focus-visible {
+            outline: 3px solid var(--color-accent);
+            outline-offset: 3px;
+            border-radius: 4px;
+        }
+
+        /*------------------------------------*\
+          #LAYOUT & CLASSES UTILITAIRES
+        \*------------------------------------*/
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+            padding-left: var(--space-3);
+            padding-right: var(--space-3);
+        }
+
+        section {
+            padding-top: var(--space-8);
+            padding-bottom: var(--space-8);
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: var(--space-6);
+        }
+
+        .section-subtitle {
+            text-align: center;
+            max-width: 60ch;
+            margin: 0 auto var(--space-6);
+            color: var(--color-text-muted);
+        }
+
+        /*------------------------------------*\
+          #BOUTONS
+        \*------------------------------------*/
+
+        .btn {
+            display: inline-block;
+            padding: var(--space-2) var(--space-4);
+            border-radius: var(--border-radius-md);
+            font-weight: 600;
+            text-align: center;
+            cursor: pointer;
+            transition: var(--transition);
+            border: 2px solid transparent;
+        }
+
+        .btn--primary {
+            background-color: var(--color-primary);
+            color: white;
+        }
+        .btn--primary:hover {
+            background-color: transparent;
+            color: var(--color-primary);
+            border-color: var(--color-primary);
+            text-decoration: none;
+        }
+
+        .btn--secondary {
+            background-color: var(--color-surface);
+            color: var(--color-text);
+            border-color: var(--color-border);
+        }
+        .btn--secondary:hover {
+            background-color: var(--color-border);
+            text-decoration: none;
+        }
+
+        /*------------------------------------*\
+          #NAVIGATION
+        \*------------------------------------*/
+
+        .main-header {
+            position: sticky;
+            top: 0;
+            width: 100%;
+            z-index: 100;
+            background-color: color-mix(in srgb, var(--color-background) 85%, transparent);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .nav-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 5rem; /* 80px */
+        }
+
+        .logo {
+            font-weight: 800;
+            font-size: 1.5rem;
+            color: var(--color-text);
+            display: flex;
+            align-items: center;
+            gap: var(--space-1);
+        }
+        .logo:hover { text-decoration: none; }
+        .logo svg {
+            width: 32px;
+            height: 32px;
+            color: var(--color-primary);
+        }
+
+        .nav-links {
+            display: none; /* Caché sur mobile */
+            list-style: none;
+            gap: var(--space-3);
+        }
+
+        .nav-links a {
+            color: var(--color-text-muted);
+            font-weight: 500;
+        }
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--color-primary);
+            text-decoration: none;
+        }
+
+        .nav-cta { display: none; } /* Caché sur mobile */
+
+        .mobile-nav-toggle {
+            display: block;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+            z-index: 101;
+        }
+        .mobile-nav-toggle .icon-menu,
+        .mobile-nav-toggle .icon-close {
+            width: 24px;
+            height: 24px;
+            color: var(--color-text);
+        }
+        .icon-close { display: none; }
+
+        /* Styles pour le menu mobile ouvert */
+        body.nav-open .icon-menu { display: none; }
+        body.nav-open .icon-close { display: block; }
+        body.nav-open .nav-links {
+            display: flex;
+            flex-direction: column;
+            position: absolute;
+            top: 5rem;
+            left: 0;
+            right: 0;
+            background-color: var(--color-background);
+            padding: var(--space-4);
+            border-bottom: 1px solid var(--color-border);
+            align-items: center;
+            gap: var(--space-4);
+        }
+        body.nav-open .nav-cta {
+            display: block;
+            margin-top: var(--space-2);
+        }
+
+
+        /*------------------------------------*\
+          #HERO
+        \*------------------------------------*/
+
+        .hero {
+            text-align: center;
+            padding: var(--space-8) 0;
+        }
+
+        .hero__content {
+            max-width: 75ch;
+            margin: 0 auto;
+        }
+
+        .hero__subtitle {
+            font-size: clamp(1.125rem, 2.5vw, 1.25rem);
+            color: var(--color-text-muted);
+            margin: var(--space-3) auto;
+        }
+
+        .hero__actions {
+            display: flex;
+            justify-content: center;
+            gap: var(--space-2);
+            margin-top: var(--space-4);
+            flex-wrap: wrap;
+        }
+
+        .hero__visual {
+            margin-top: var(--space-8);
+            background-color: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: var(--border-radius-lg);
+            padding: var(--space-2);
+            box-shadow: var(--shadow-lg);
+        }
+        .hero__visual img {
+            border-radius: calc(var(--border-radius-lg) - var(--space-2));
+        }
+
+        .trust-logos {
+            margin-top: var(--space-8);
+        }
+        .trust-logos p {
+            text-align: center;
+            margin-bottom: var(--space-3);
+            color: var(--color-text-muted);
+            font-weight: 500;
+        }
+        .trust-logos__grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: var(--space-4);
+            opacity: 0.7;
+        }
+        .trust-logos__grid svg {
+            height: 24px;
+            width: auto;
+            color: var(--color-text-muted);
+        }
+
+        /*------------------------------------*\
+          #FEATURES
+        \*------------------------------------*/
+
+        .features-grid {
+            display: grid;
+            gap: var(--space-4);
+        }
+
+        .feature-card {
+            background-color: var(--color-surface);
+            padding: var(--space-4);
+            border-radius: var(--border-radius-lg);
+            border: 1px solid var(--color-border);
+            text-align: center;
+            transition: var(--transition);
+        }
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+        }
+        .feature-card__icon {
+            display: inline-flex;
+            padding: var(--space-2);
+            background-color: color-mix(in srgb, var(--color-primary) 10%, transparent);
+            border-radius: var(--border-radius-md);
+            margin-bottom: var(--space-3);
+        }
+        .feature-card__icon svg {
+            width: 32px;
+            height: 32px;
+            color: var(--color-primary);
+        }
+        .feature-card h3 {
+            margin-bottom: var(--space-1);
+        }
+        .feature-card p {
+            color: var(--color-text-muted);
+            margin-bottom: 0;
+        }
+
+        /*------------------------------------*\
+          #SOCIAL PROOF (TÉMOIGNAGES)
+        \*------------------------------------*/
+
+        .testimonials {
+            background-color: var(--color-surface);
+        }
+
+        .testimonials-grid {
+            display: grid;
+            gap: var(--space-4);
+        }
+
+        .testimonial-card {
+            background-color: var(--color-background);
+            padding: var(--space-4);
+            border-radius: var(--border-radius-lg);
+            border: 1px solid var(--color-border);
+            box-shadow: var(--shadow-sm);
+        }
+        .testimonial-card__quote {
+            font-style: italic;
+            position: relative;
+            padding-left: var(--space-3);
+            border-left: 3px solid var(--color-primary);
+        }
+        .testimonial-card__author {
+            display: flex;
+            align-items: center;
+            gap: var(--space-2);
+            margin-top: var(--space-3);
+        }
+        .testimonial-card__author img {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        .author-info strong {
+            display: block;
+            color: var(--color-text);
+        }
+        .author-info span {
+            color: var(--color-text-muted);
+            font-size: 0.9rem;
+        }
+        .star-rating {
+            margin-top: var(--space-3);
+            color: var(--color-accent);
+        }
+
+        /*------------------------------------*\
+          #TARIFS
+        \*------------------------------------*/
+
+        .pricing-toggle {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: var(--space-2);
+            margin-bottom: var(--space-4);
+        }
+        .toggle-switch {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 34px;
+        }
+        .toggle-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-color: var(--color-border);
+            transition: .4s;
+            border-radius: 34px;
+        }
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 26px;
+            width: 26px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+        input:checked + .slider { background-color: var(--color-primary); }
+        input:checked + .slider:before { transform: translateX(26px); }
+
+        .pricing-grid {
+            display: grid;
+            gap: var(--space-4);
+            align-items: start;
+        }
+
+        .pricing-tier {
+            background-color: var(--color-surface);
+            border: 2px solid var(--color-border);
+            border-radius: var(--border-radius-lg);
+            padding: var(--space-4);
+            text-align: center;
+            transition: var(--transition);
+        }
+        .pricing-tier--popular {
+            border-color: var(--color-primary);
+            transform: scale(1.05);
+            box-shadow: var(--shadow-lg);
+        }
+        .popular-badge {
+            display: inline-block;
+            background-color: var(--color-primary);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 99px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: var(--space-2);
+        }
+        .pricing-tier h3 {
+            font-size: 1.5rem;
+        }
+        .price {
+            font-size: 3rem;
+            font-weight: 800;
+            margin: var(--space-2) 0;
+        }
+        .price .term {
+            font-size: 1rem;
+            font-weight: 400;
+            color: var(--color-text-muted);
+        }
+        .price-container .annual { display: none; }
+        .show-annual .monthly { display: none; }
+        .show-annual .annual { display: block; }
+        .annual-savings {
+            color: var(--color-success);
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+
+        .features-list {
+            list-style: none;
+            margin: var(--space-4) 0;
+            text-align: left;
+        }
+        .features-list li {
+            margin-bottom: var(--space-2);
+            display: flex;
+            align-items: center;
+            gap: var(--space-2);
+        }
+        .features-list svg {
+            width: 20px;
+            height: 20px;
+            color: var(--color-success);
+            flex-shrink: 0;
+        }
+        .pricing-tier .btn {
+            width: 100%;
+            margin-top: var(--space-3);
+        }
+
+        /*------------------------------------*\
+          #HOW IT WORKS
+        \*------------------------------------*/
+
+        .how-it-works-steps {
+            display: grid;
+            gap: var(--space-4);
+            position: relative;
+        }
+        .step {
+            text-align: center;
+        }
+        .step__number {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: color-mix(in srgb, var(--color-primary) 10%, transparent);
+            color: var(--color-primary);
+            font-size: 1.75rem;
+            font-weight: 700;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: var(--space-2);
+            border: 2px solid color-mix(in srgb, var(--color-primary) 20%, transparent);
+        }
+        .step h3 {
+            margin-bottom: var(--space-1);
+        }
+        .step p {
+            color: var(--color-text-muted);
+            margin: 0 auto;
+        }
+
+        /*------------------------------------*\
+          #À PROPOS
+        \*------------------------------------*/
+        .about-grid {
+            display: grid;
+            gap: var(--space-6);
+            align-items: center;
+        }
+        .about-content ul {
+            list-style: none;
+            margin-top: var(--space-3);
+        }
+        .about-content li {
+            display: flex;
+            gap: var(--space-2);
+            margin-bottom: var(--space-2);
+        }
+        .about-content li svg {
+            width: 24px;
+            height: 24px;
+            color: var(--color-accent);
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+        .about-image {
+            border-radius: var(--border-radius-lg);
+            object-fit: cover;
+            aspect-ratio: 4/3;
+        }
+
+        /*------------------------------------*\
+          #FAQ
+        \*------------------------------------*/
+
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .faq-item {
+            border-bottom: 1px solid var(--color-border);
+        }
+        .faq-item summary {
+            font-size: 1.125rem;
+            font-weight: 600;
+            padding: var(--space-3) 0;
+            cursor: pointer;
+            list-style: none; /* Remove default marker */
+            position: relative;
+            padding-right: var(--space-4);
+        }
+        .faq-item summary::-webkit-details-marker { display: none; } /* Chrome */
+        .faq-item summary::after {
+            content: '+';
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.5rem;
+            color: var(--color-primary);
+            transition: transform 0.2s;
+        }
+        .faq-item[open] summary::after {
+            transform: translateY(-50%) rotate(45deg);
+        }
+        .faq-item div {
+            padding-bottom: var(--space-3);
+            color: var(--color-text-muted);
+        }
+
+        /*------------------------------------*\
+          #FINAL CTA
+        \*------------------------------------*/
+
+        .final-cta {
+            background-color: var(--color-primary);
+            color: white;
+            border-radius: var(--border-radius-lg);
+            padding: var(--space-8) var(--space-4);
+            text-align: center;
+        }
+        .final-cta h2 {
+            color: white;
+        }
+        .final-cta p {
+            color: rgba(255,255,255,0.8);
+            margin: var(--space-2) auto var(--space-4);
+        }
+        .cta-form {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-2);
+            max-width: 400px;
+            margin: 0 auto;
+        }
+        .cta-form input {
+            padding: var(--space-2);
+            border-radius: var(--border-radius-md);
+            border: 1px solid transparent;
+            font-size: 1rem;
+        }
+        .cta-form input:focus-visible {
+            outline-color: white;
+        }
+        .cta-form .btn {
+            background-color: var(--color-accent);
+            color: var(--color-text);
+        }
+        .cta-form .btn:hover {
+            background-color: white;
+            color: var(--color-primary);
+        }
+        .form-message {
+            margin-top: var(--space-2);
+            font-weight: 500;
+            display: none;
+        }
+        .form-message.success { color: var(--color-success); }
+        .form-message.error { color: var(--color-error); }
+
+
+        /*------------------------------------*\
+          #FOOTER
+        \*------------------------------------*/
+
+        .main-footer {
+            background-color: var(--color-surface);
+            padding-top: var(--space-8);
+            padding-bottom: var(--space-4);
+            color: var(--color-text-muted);
+        }
+        .footer-grid {
+            display: grid;
+            gap: var(--space-6);
+            padding-bottom: var(--space-6);
+            border-bottom: 1px solid var(--color-border);
+        }
+        .footer-about .logo {
+            margin-bottom: var(--space-2);
+        }
+        .footer-links h4 {
+            color: var(--color-text);
+            margin-bottom: var(--space-2);
+        }
+        .footer-links ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-1);
+        }
+        .footer-links a {
+            color: var(--color-text-muted);
+        }
+        .footer-bottom {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: var(--space-2);
+            padding-top: var(--space-4);
+            text-align: center;
+            font-size: 0.9rem;
+        }
+        .social-links {
+            display: flex;
+            gap: var(--space-3);
+        }
+        .social-links a {
+            color: var(--color-text-muted);
+        }
+        .social-links svg {
+            width: 24px;
+            height: 24px;
+        }
+
+        /*------------------------------------*\
+          #POINTS DE RUPTURE RESPONSIVE
+        \*------------------------------------*/
+
+        /* Tablette et plus */
+        @media (min-width: 640px) {
+            .nav-links { display: flex; }
+            .nav-cta { display: block; }
+            .mobile-nav-toggle { display: none; }
+
+            .features-grid { grid-template-columns: repeat(2, 1fr); }
+
+            .cta-form {
+                flex-direction: row;
+            }
+            .cta-form input { flex-grow: 1; }
+
+            .footer-grid { grid-template-columns: repeat(2, 1fr); }
+
+            .footer-bottom {
+                flex-direction: row;
+                justify-content: space-between;
+            }
+        }
+
+        /* Desktop et plus */
+        @media (min-width: 1024px) {
+            .features-grid { grid-template-columns: repeat(3, 1fr); }
+
+            .testimonials-grid { grid-template-columns: repeat(3, 1fr); }
+
+            .pricing-grid { grid-template-columns: repeat(3, 1fr); }
+
+            .how-it-works-steps {
+                grid-template-columns: repeat(3, 1fr);
+                gap: var(--space-8);
+            }
+            /* Ligne de connexion */
+            .how-it-works-steps .step:not(:last-child)::after {
+                content: '';
+                position: absolute;
+                top: 30px;
+                left: 50%;
+                width: 100%;
+                height: 2px;
+                background: repeating-linear-gradient(90deg, var(--color-border), var(--color-border) 6px, transparent 6px, transparent 12px);
+                transform: translateX(calc(var(--space-8) / 2 * -1));
+                z-index: -1;
+            }
+
+            .about-grid { grid-template-columns: 1fr 1fr; }
+
+            .footer-grid { grid-template-columns: 2fr 1fr 1fr 1fr; }
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- ================================================================================================ -->
+    <!-- 1. NAVIGATION                                                                                    -->
+    <!-- ================================================================================================ -->
+    <header class="main-header">
+        <div class="container nav-container">
+            <a href="#" class="logo">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 18v-5.25m0 0a6.01 6.01 0 001.5-.189m-1.5.189a6.01 6.01 0 01-1.5-.189m3.75 7.478a12.06 12.06 0 01-4.5 0m3.75 2.311a7.5 7.5 0 01-7.5 0c-1.255 0-2.443.29-3.5.832m14.5.002c1.057-.542 2.245-.832 3.5-.832a7.5 7.5 0 010 15c-1.255 0-2.443-.29-3.5-.832m0 0a7.5 7.5 0 00-7.5 0" />
+                </svg>
+                <span>[NOM DE LA STARTUP]</span>
+            </a>
+
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="#features">Fonctionnalités</a></li>
+                    <li><a href="#pricing">Tarifs</a></li>
+                    <li><a href="#about">À propos</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li class="nav-cta"><a href="#" class="btn btn--primary">Commencer</a></li>
+                </ul>
+            </nav>
+
+            <button class="mobile-nav-toggle" aria-label="Ouvrir le menu de navigation" aria-expanded="false">
+                <svg class="icon-menu" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                </svg>
+                <svg class="icon-close" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+        </div>
+    </header>
+
+    <main>
+
+        <!-- ================================================================================================ -->
+        <!-- 2. HERO                                                                                        -->
+        <!-- ================================================================================================ -->
+        <section id="hero" class="hero">
+            <div class="container hero__content">
+                <h1>[VALEUR AJOUTÉE]</h1>
+                <p class="hero__subtitle">Notre service de [SERVICE] est la solution la plus simple pour [BENEFICE CLIENT]. Gagnez du temps, de l'énergie et concentrez-vous sur ce qui compte vraiment.</p>
+                <div class="hero__actions">
+                    <a href="#pricing" class="btn btn--primary">Commencer l'essai gratuit</a>
+                    <a href="#how-it-works" class="btn btn--secondary">Voir comment ça marche</a>
+                </div>
+            </div>
+
+            <div class="container">
+                <div class="hero__visual">
+                    <img src="https://placehold.co/1100x600/4F46E5/FFFFFF?text=Visuel+de+votre+produit" alt="Illustration du service [SERVICE] en action" width="1100" height="600">
+                </div>
+            </div>
+
+            <div class="trust-logos">
+                <p>Ils nous font confiance</p>
+                <div class="trust-logos__grid">
+                    <!-- Remplacer par les vrais logos de vos partenaires/clients -->
+                    <svg role="img" aria-label="Logo Partenaire 1" viewBox="0 0 133 32"><path fill="currentColor" d="M4.03 32V0h5.48c3.15 0 5.46 1.03 6.94 3.09s2.22 4.88 2.22 8.48c0 3.6-.74 6.42-2.22 8.48s-3.79 3.09-6.94 3.09H4.03zm3.7-3.66h1.78c3.28 0 5.1-1.78 5.1-5.34 0-3.56-1.82-5.34-5.1-5.34H7.73v10.68zM24.73 32V0h3.7v32h-3.7zM34.33 32V0h13.22v3.66h-9.52V13.8h8.5v3.66h-8.5v10.88h9.52V32H34.33zM56.41 32V0h3.7v14.15L67.92 0h4.5l-8.62 15.35L72.86 32h-4.5l-5.92-12.3-2.32 2.58v9.86h-3.7zM78.6 32V0h3.7v32h-3.7zM89.72 32c-4.43 0-7.3-2.92-7.3-8.75V0h3.7v23c0 3.9 1.75 5.34 3.6 5.34s3.6-1.44 3.6-5.34V0h3.7v23.25c0 5.83-2.88 8.75-7.3 8.75zM102.7 32V0h3.7v32h-3.7zM121.2 32c-4.22 0-6.64-2.48-6.64-7.44 0-5.02 2.48-7.5 6.76-7.5 2.54 0 4.1.74 5.04 1.44l-1.38 3.2c-.88-.58-2.1-.98-3.6-.98-2.22 0-3.54 1.32-3.54 4.82 0 3.44 1.32 4.76 3.54 4.76 1.5 0 2.72-.4 3.6-.98l1.38 3.2c-.94.7-2.5 1.44-5.16 1.44z"></path></svg>
+                    <svg role="img" aria-label="Logo Partenaire 2" viewBox="0 0 102 32"><path fill="currentColor" d="M26.23 32V0h3.7v32h-3.7zM38.81 32V0h3.7v32h-3.7zM0 32V0h13.22v3.66H3.7V13.8h8.5v3.66h-8.5v10.88h9.52V32H0zM51.39 32V0h3.7v14.15L62.9 0h4.5l-8.62 15.35L67.84 32h-4.5l-5.92-12.3-2.32 2.58v9.86h-3.7zM73.58 32V0h13.22v3.66h-9.52V13.8h8.5v3.66h-8.5v10.88h9.52V32H73.58zM98.66 32V0h3.7v32h-3.7z"></path></svg>
+                    <svg role="img" aria-label="Logo Partenaire 3" viewBox="0 0 108 32"><path fill="currentColor" d="M4.03 32V0h5.48c3.15 0 5.46 1.03 6.94 3.09s2.22 4.88 2.22 8.48c0 3.6-.74 6.42-2.22 8.48s-3.79 3.09-6.94 3.09H4.03zm3.7-3.66h1.78c3.28 0 5.1-1.78 5.1-5.34 0-3.56-1.82-5.34-5.1-5.34H7.73v10.68zM24.73 32V0h3.7v32h-3.7zM34.33 32V0h13.22v3.66h-9.52V13.8h8.5v3.66h-8.5v10.88h9.52V32H34.33zM56.41 32V0h3.7v14.15L67.92 0h4.5l-8.62 15.35L72.86 32h-4.5l-5.92-12.3-2.32 2.58v9.86h-3.7zM88.75 32c-5.34 0-8.75-3.44-8.75-9.76V0h3.7v22.24c0 4.54 2.04 6.16 5.05 6.16s5.05-1.62 5.05-6.16V0h3.7v22.24C101.55 28.56 98.14 32 92.8 32z"></path></svg>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================================================================================================ -->
+        <!-- 3. FONCTIONNALITÉS                                                                             -->
+        <!-- ================================================================================================ -->
+        <section id="features" class="features">
+            <div class="container">
+                <h2 class="section-title">Tout ce dont vous avez besoin, et rien de plus</h2>
+                <p class="section-subtitle">Nous nous concentrons sur les fonctionnalités qui apportent une réelle valeur ajoutée, sans vous encombrer de complexité inutile.</p>
+                <div class="features-grid">
+                    <!-- Carte 1 -->
+                    <div class="feature-card">
+                        <div class="feature-card__icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" /></svg>
+                        </div>
+                        <h3>Fonctionnalité A</h3>
+                        <p>Économisez des heures chaque semaine grâce à notre automatisation intelligente.</p>
+                    </div>
+                    <!-- Carte 2 -->
+                    <div class="feature-card">
+                        <div class="feature-card__icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.286zm0 13.036h.008v.008h-.008v-.008z" /></svg>
+                        </div>
+                        <h3>Fonctionnalité B</h3>
+                        <p>Prenez des décisions éclairées avec des tableaux de bord clairs et personnalisables.</p>
+                    </div>
+                    <!-- Carte 3 -->
+                    <div class="feature-card">
+                        <div class="feature-card__icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M10.5 6h9.75M10.5 6a1.5 1.5 0 11-3 0m3 0a1.5 1.5 0 10-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-9.75 0h9.75" /></svg>
+                        </div>
+                        <h3>Fonctionnalité C</h3>
+                        <p>Collaborez en temps réel avec votre équipe, où que vous soyez.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================================================================================================ -->
+        <!-- 4. PREUVES SOCIALES (TÉMOIGNAGES)                                                                -->
+        <!-- ================================================================================================ -->
+        <section id="testimonials" class="testimonials">
+            <div class="container">
+                <h2 class="section-title">Ils parlent de nous mieux que nous</h2>
+                <div class="testimonials-grid">
+                    <!-- Témoignage 1 -->
+                    <div class="testimonial-card">
+                        <div class="star-rating">★★★★★</div>
+                        <blockquote class="testimonial-card__quote">
+                            <p>"[NOM DE LA STARTUP] a transformé notre façon de travailler. C'est simple, intuitif et incroyablement puissant. Un must-have."</p>
+                        </blockquote>
+                        <footer class="testimonial-card__author">
+                            <img src="https://placehold.co/100x100/E5E7EB/4F46E5?text=AV" alt="Avatar de Jeanne Dupont">
+                            <div class="author-info">
+                                <strong>Jeanne Dupont</strong>
+                                <span>CEO, Startup Innovante</span>
+                            </div>
+                        </footer>
+                    </div>
+                    <!-- Témoignage 2 -->
+                    <div class="testimonial-card">
+                        <div class="star-rating">★★★★★</div>
+                        <blockquote class="testimonial-card__quote">
+                            <p>"Le support client est exceptionnel. Ils sont réactifs et toujours prêts à aider. On se sent vraiment accompagné."</p>
+                        </blockquote>
+                        <footer class="testimonial-card__author">
+                            <img src="https://placehold.co/100x100/E5E7EB/4F46E5?text=AV" alt="Avatar de Marc Leroi">
+                            <div class="author-info">
+                                <strong>Marc Leroi</strong>
+                                <span>Directeur Technique, Tech Solutions</span>
+                            </div>
+                        </footer>
+                    </div>
+                    <!-- Témoignage 3 -->
+                    <div class="testimonial-card">
+                        <div class="star-rating">★★★★☆</div>
+                        <blockquote class="testimonial-card__quote">
+                            <p>"Un outil solide qui fait exactement ce qu'il promet. Le gain de temps pour notre équipe est considérable."</p>
+                        </blockquote>
+                        <footer class="testimonial-card__author">
+                            <img src="https://placehold.co/100x100/E5E7EB/4F46E5?text=AV" alt="Avatar de Sophie Martin">
+                            <div class="author-info">
+                                <strong>Sophie Martin</strong>
+                                <span>Chef de projet, Agence Créa</span>
+                            </div>
+                        </footer>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================================================================================================ -->
+        <!-- 5. TARIFS                                                                                      -->
+        <!-- ================================================================================================ -->
+        <section id="pricing" class="pricing">
+            <div class="container price-container">
+                <h2 class="section-title">Un tarif simple et transparent</h2>
+                <p class="section-subtitle">Choisissez le plan qui vous convient. Pas de frais cachés, pas de surprises.</p>
+
+                <div class="pricing-toggle">
+                    <span>Mensuel</span>
+                    <label class="toggle-switch">
+                        <input type="checkbox" id="pricing-toggle-checkbox">
+                        <span class="slider"></span>
+                    </label>
+                    <span>Annuel <span class="annual-savings">(Économisez 20%)</span></span>
+                </div>
+
+                <div class="pricing-grid">
+                    <!-- Offre 1 -->
+                    <div class="pricing-tier">
+                        <h3>Essentiel</h3>
+                        <p>Pour les indépendants et petites équipes</p>
+                        <div class="price">
+                            <div class="monthly">29€<span class="term">/mois</span></div>
+                            <div class="annual">279€<span class="term">/an</span></div>
+                        </div>
+                        <ul class="features-list">
+                            <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clip-rule="evenodd" /></svg> 10 Projets</li>
+                            <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clip-rule="evenodd" /></svg> 5 Utilisateurs</li>
+                            <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clip-rule="evenodd" /></svg> Support par email</li>
+                        </ul>
+                        <a href="#" class="btn btn--secondary">Choisir Essentiel</a>
+                    </div>
+                    <!-- Offre 2 (Populaire) -->
+                    <div class="pricing-tier pricing-tier--popular">
+                        <span class="popular-badge">Plus populaire</span>
+                        <h3>Pro</h3>
+                        <p>Pour les entreprises en croissance</p>
+                        <div class="price">
+                            <div class="monthly">79€<span class="term">/mois</span></div>
+                            <div class="annual">759€<span class="term">/an</span></div>
+                        </div>
+                        <ul class="features-list">
+                            <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clip-rule="evenodd" /></svg> Projets illimités</li>
+                            <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clip-rule="evenodd" /></svg> 20 Utilisateurs</li>
+                            <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clip-rule="evenodd" /></svg> Support prioritaire</li>
+                            <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clip-rule="evenodd" /></svg> Intégrations API</li>
+                        </ul>
+                        <a href="#" class="btn btn--primary">Choisir Pro</a>
+                    </div>
+                    <!-- Offre 3 -->
+                    <div class="pricing-tier">
+                        <h3>Entreprise</h3>
+                        <p>Pour les grandes organisations</p>
+                        <div class="price">
+                            Contactez-nous
+                        </div>
+                        <ul class="features-list">
+                            <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clip-rule="evenodd" /></svg> Solution sur mesure</li>
+                            <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clip-rule="evenodd" /></svg> SSO & Sécurité avancée</li>
+                            <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clip-rule="evenodd" /></svg> Manager de compte dédié</li>
+                        </ul>
+                        <a href="#contact" class="btn btn--secondary">Nous contacter</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================================================================================================ -->
+        <!-- 6. COMMENT ÇA MARCHE                                                                           -->
+        <!-- ================================================================================================ -->
+        <section id="how-it-works" class="how-it-works">
+            <div class="container">
+                <h2 class="section-title">Commencez en 3 étapes simples</h2>
+                <div class="how-it-works-steps">
+                    <!-- Étape 1 -->
+                    <div class="step">
+                        <div class="step__number">1</div>
+                        <h3>Créez votre compte</h3>
+                        <p>L'inscription est gratuite et ne prend qu'une minute. Pas besoin de carte de crédit.</p>
+                    </div>
+                    <!-- Étape 2 -->
+                    <div class="step">
+                        <div class="step__number">2</div>
+                        <h3>Configurez votre projet</h3>
+                        <p>Suivez notre guide intuitif pour paramétrer votre premier projet et inviter votre équipe.</p>
+                    </div>
+                    <!-- Étape 3 -->
+                    <div class="step">
+                        <div class="step__number">3</div>
+                        <h3>Profitez des résultats</h3>
+                        <p>Commencez à utiliser [NOM DE LA STARTUP] et voyez immédiatement l'impact sur votre productivité.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================================================================================================ -->
+        <!-- 7. À PROPOS / POURQUOI NOUS                                                                      -->
+        <!-- ================================================================================================ -->
+        <section id="about" class="about">
+            <div class="container">
+                <div class="about-grid">
+                    <img class="about-image" src="https://placehold.co/550x412/F9FAFB/1F2937?text=Notre+équipe" alt="Photo de l'équipe [NOM DE LA STARTUP]">
+                    <div class="about-content">
+                        <h2>Conçu par des passionnés, pour des passionnés</h2>
+                        <p>Nous avons créé [NOM DE LA STARTUP] car nous étions frustrés par la complexité des outils existants. Notre mission est de fournir une solution puissante mais simple, qui s'adapte à vous, et non l'inverse.</p>
+                        <ul>
+                            <li>
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" /></svg>
+                                <span><strong>Approche centrée sur l'utilisateur :</strong> Chaque fonctionnalité est pensée pour vous.</span>
+                            </li>
+                            <li>
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" /></svg>
+                                <span><strong>Performance et rapidité :</strong> Pas de temps de chargement, juste de l'efficacité.</span>
+                            </li>
+                            <li>
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0011.667 0l3.181-3.183m-4.991-2.691v4.992" /></svg>
+                                <span><strong>Support humain et réactif :</strong> Nous sommes là pour vous aider à réussir.</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================================================================================================ -->
+        <!-- 8. FAQ                                                                                           -->
+        <!-- ================================================================================================ -->
+        <section id="faq" class="faq">
+            <div class="container">
+                <h2 class="section-title">Questions fréquentes</h2>
+                <div class="faq-container">
+                    <details class="faq-item">
+                        <summary>Est-ce que je peux annuler mon abonnement à tout moment ?</summary>
+                        <div><p>Oui, absolument. Vous pouvez annuler votre abonnement depuis votre espace client en un seul clic. Vous conserverez l'accès à votre plan jusqu'à la fin de la période de facturation en cours.</p></div>
+                    </details>
+                    <details class="faq-item">
+                        <summary>Quelles sont les méthodes de paiement acceptées ?</summary>
+                        <div><p>Nous acceptons toutes les principales cartes de crédit (Visa, Mastercard, American Express) via notre partenaire de paiement sécurisé Stripe. Pour les plans Entreprise, nous pouvons également mettre en place des factures et des virements bancaires.</p></div>
+                    </details>
+                    <details class="faq-item">
+                        <summary>Proposez-vous une période d'essai gratuite ?</summary>
+                        <div><p>Oui, tous nos plans commencent par une période d'essai gratuite de 14 jours, sans engagement et sans carte de crédit requise. Vous aurez accès à toutes les fonctionnalités du plan que vous avez choisi.</p></div>
+                    </details>
+                    <details class="faq-item">
+                        <summary>Mes données sont-elles en sécurité avec vous ?</summary>
+                        <div><p>La sécurité de vos données est notre priorité absolue. Nous utilisons un cryptage de pointe (SSL/TLS) pour toutes les communications et vos données sont stockées dans des centres de données hautement sécurisés. Nous sommes conformes au RGPD.</p></div>
+                    </details>
+                    <details class="faq-item">
+                        <summary>Peut-on intégrer [NOM DE LA STARTUP] avec d'autres outils ?</summary>
+                        <div><p>Notre plan Pro inclut l'accès à notre API REST, vous permettant de créer vos propres intégrations. Nous travaillons également sur des intégrations natives avec des outils populaires comme Slack, Zapier et Trello.</p></div>
+                    </details>
+                    <details class="faq-item">
+                        <summary>Comment fonctionne le support client ?</summary>
+                        <div><p>Nous offrons un support par email pour tous nos clients. Les abonnés au plan Pro bénéficient d'un support prioritaire avec des temps de réponse garantis. Notre objectif est de répondre à toutes les demandes en moins de 24 heures.</p></div>
+                    </details>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================================================================================================ -->
+        <!-- 9. BANDEAU D'APPEL À L'ACTION FINAL                                                              -->
+        <!-- ================================================================================================ -->
+        <section id="contact">
+            <div class="container">
+                <div class="final-cta">
+                    <h2>Prêt à transformer votre [ACTIVITÉ] ?</h2>
+                    <p>Rejoignez des milliers d'utilisateurs satisfaits. Inscrivez-vous pour recevoir nos actualités et une offre de lancement exclusive.</p>
+                    <form class="cta-form" id="cta-form">
+                        <label for="email-input" class="sr-only">Votre adresse email</label>
+                        <input type="email" id="email-input" name="email" placeholder="Votre adresse email" required>
+                        <button type="submit" class="btn">M'inscrire</button>
+                    </form>
+                    <p id="form-message" class="form-message" role="alert"></p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ================================================================================================ -->
+    <!-- 10. PIED DE PAGE                                                                                 -->
+    <!-- ================================================================================================ -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-about">
+                    <a href="#" class="logo">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 18v-5.25m0 0a6.01 6.01 0 001.5-.189m-1.5.189a6.01 6.01 0 01-1.5-.189m3.75 7.478a12.06 12.06 0 01-4.5 0m3.75 2.311a7.5 7.5 0 01-7.5 0c-1.255 0-2.443.29-3.5.832m14.5.002c1.057-.542 2.245-.832 3.5-.832a7.5 7.5 0 010 15c-1.255 0-2.443-.29-3.5-.832m0 0a7.5 7.5 0 00-7.5 0" />
+                        </svg>
+                        <span>[NOM DE LA STARTUP]</span>
+                    </a>
+                    <p>[VALEUR AJOUTÉE]</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Produit</h4>
+                    <ul>
+                        <li><a href="#features">Fonctionnalités</a></li>
+                        <li><a href="#pricing">Tarifs</a></li>
+                        <li><a href="#faq">FAQ</a></li>
+                        <li><a href="#">Mises à jour</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Entreprise</h4>
+                    <ul>
+                        <li><a href="#about">À propos</a></li>
+                        <li><a href="#">Carrières</a></li>
+                        <li><a href="#">Presse</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Légal</h4>
+                    <ul>
+                        <li><a href="#">Mentions Légales</a></li>
+                        <li><a href="#">Confidentialité</a></li>
+                        <li><a href="#">Conditions d'utilisation</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; <span id="current-year"></span> [NOM DE LA STARTUP], Inc. Tous droits réservés.</p>
+                <div class="social-links">
+                    <a href="#" aria-label="Twitter"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-.424.727-.666 1.561-.666 2.477 0 1.61.82 3.027 2.053 3.863-.764-.024-1.482-.232-2.11-.583v.062c0 2.256 1.605 4.14 3.737 4.568-.39.106-.803.162-1.227.162-.3 0-.593-.028-.877-.082.593 1.85 2.307 3.198 4.352 3.234-1.595 1.25-3.604 1.995-5.786 1.995-.376 0-.747-.022-1.112-.065 2.062 1.323 4.51 2.092 7.14 2.092 8.57 0 13.255-7.098 13.255-13.254 0-.2-.005-.402-.014-.602A9.46 9.46 0 0024 4.557z"/></svg></a>
+                    <a href="#" aria-label="LinkedIn"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ================================================================================================ -->
+    <!-- JAVASCRIPT MINIMALISTE                                                                           -->
+    <!-- ================================================================================================ -->
+    <script defer>
+        document.addEventListener('DOMContentLoaded', function() {
+
+            // --- Navigation Mobile ---
+            const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
+            const navLinks = document.querySelector('.nav-links');
+
+            mobileNavToggle.addEventListener('click', () => {
+                const isExpanded = mobileNavToggle.getAttribute('aria-expanded') === 'true';
+                document.body.classList.toggle('nav-open');
+                mobileNavToggle.setAttribute('aria-expanded', !isExpanded);
+            });
+
+            // Fermer le menu en cliquant sur un lien
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.addEventListener('click', () => {
+                    if (document.body.classList.contains('nav-open')) {
+                        document.body.classList.remove('nav-open');
+                        mobileNavToggle.setAttribute('aria-expanded', 'false');
+                    }
+                });
+            });
+
+            // --- Bascule des Tarifs ---
+            const pricingToggle = document.getElementById('pricing-toggle-checkbox');
+            const priceContainer = document.querySelector('.price-container');
+
+            if (pricingToggle && priceContainer) {
+                pricingToggle.addEventListener('change', () => {
+                    priceContainer.classList.toggle('show-annual', pricingToggle.checked);
+                });
+            }
+
+            // --- Formulaire CTA ---
+            const ctaForm = document.getElementById('cta-form');
+            const formMessage = document.getElementById('form-message');
+
+            if (ctaForm) {
+                ctaForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    const emailInput = document.getElementById('email-input');
+
+                    formMessage.textContent = '';
+                    formMessage.style.display = 'none';
+
+                    if (emailInput.checkValidity()) {
+                        // Simule un envoi réussi
+                        formMessage.textContent = 'Merci ! Vous êtes bien inscrit.';
+                        formMessage.className = 'form-message success';
+                        formMessage.style.display = 'block';
+                        ctaForm.reset();
+                    } else {
+                        // Message d'erreur simple (les navigateurs modernes gèrent bien la validation)
+                        formMessage.textContent = 'Veuillez entrer une adresse email valide.';
+                        formMessage.className = 'form-message error';
+                        formMessage.style.display = 'block';
+                    }
+                });
+            }
+
+            // --- Année en cours pour le copyright ---
+            const currentYearSpan = document.getElementById('current-year');
+            if(currentYearSpan) {
+                currentYearSpan.textContent = new Date().getFullYear();
+            }
+
+        });
+    </script>
+
+</body>
+</html>
